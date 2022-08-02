@@ -26,7 +26,10 @@ router.post(
         await setTokenCookie(res, user);
 
         return res.json({
-            user
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            token: user.token
         });
     }
 );
@@ -47,10 +50,17 @@ router.get(
     (req, res) => {
         const { user } = req;
         if (user) {
+            return res.json(
+                user.toSafeObject()
+            );
+        }
+        else {
+            res.status(401)
             return res.json({
-                user: user.toSafeObject()
+                "message": "Authentication required",
+                "statusCode": 401
             });
-        } else return res.json({});
+        }
     }
 );
 
@@ -82,10 +92,9 @@ router.post(
         }
 
         await setTokenCookie(res, user);
-
-        return res.json({
+        return res.json(
             user
-        });
+        );
     }
 );
 
