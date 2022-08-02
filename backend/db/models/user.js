@@ -1,7 +1,6 @@
 'use strict';
 const { Model, Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
-const { FOREIGNKEYS } = require('sequelize/types/query-types');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -48,10 +47,13 @@ module.exports = (sequelize, DataTypes) => {
         models.Spot, { foreignKey: 'ownerId' }
       );
       User.belongsToMany(
-        models.Spots, { through: 'Booking' }
+        models.Spot, { through: models.Review }
       );
       User.belongsToMany(
-        models.Spots, { through: 'Review' }
+        models.Spot, { through: models.Booking }
+      );
+      User.belongsToMany(
+        models.Spot, { through: models.Image }
       );
     }
   };

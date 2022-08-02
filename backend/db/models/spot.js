@@ -14,10 +14,13 @@ module.exports = (sequelize, DataTypes) => {
         models.User, { foreignKey: 'ownerId' }
       );
       Spot.belongsToMany(
-        models.Users, { through: 'Booking' }
+        models.User, { through: models.Review }
       );
       Spot.belongsToMany(
-        models.Users, { through: 'Review' }
+        models.User, { through: models.Booking }
+      );
+      Spot.belongsToMany(
+        models.User, { through: models.Image }
       );
     }
   }
