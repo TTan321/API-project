@@ -13,6 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       Spot.belongsTo(
         models.User, { foreignKey: 'ownerId' }
       );
+      Spot.belongsToMany(
+        models.Users, { through: 'Booking' }
+      );
+      Spot.belongsToMany(
+        models.Users, { through: 'Review' }
+      );
     }
   }
   Spot.init({
