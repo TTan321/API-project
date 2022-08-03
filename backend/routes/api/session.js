@@ -51,6 +51,7 @@ router.get(
         const { user } = req;
         if (user) {
             return res.json(
+<<<<<<< HEAD
                 user.toSafeObject()
             );
         }
@@ -61,6 +62,11 @@ router.get(
                 "statusCode": 401
             });
         }
+=======
+                user
+            );
+        } else return res.json({});
+>>>>>>> main
     }
 );
 

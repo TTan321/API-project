@@ -13,14 +13,38 @@ module.exports = (sequelize, DataTypes) => {
       Image.belongsTo(
         models.Review, { foreignKey: 'reviewId' }
       );
+<<<<<<< HEAD
+=======
+      Image.belongsTo(
+        models.User, { foreignKey: 'userId' }
+      );
+      Image.belongsTo(
+        models.Spot, { foreignKey: 'spotId' }
+      );
+>>>>>>> main
     }
   }
   Image.init({
     url: DataTypes.STRING,
     previewImage: DataTypes.BOOLEAN,
+<<<<<<< HEAD
     spotId: DataTypes.INTEGER,
     reviewId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER
+=======
+    spotId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    reviewId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+>>>>>>> main
   }, {
     sequelize,
     modelName: 'Image',

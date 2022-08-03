@@ -17,15 +17,29 @@ module.exports = (sequelize, DataTypes) => {
         models.User, { through: models.Review }
       );
       Spot.belongsToMany(
+<<<<<<< HEAD
         models.User, { through: models.Booking }
       );
       Spot.belongsToMany(
         models.User, { through: models.Image }
+=======
+        models.User, { through: models.Image }
+      );
+      Spot.belongsToMany(
+        models.User, { through: models.Booking }
+>>>>>>> main
       );
     }
   }
   Spot.init({
+<<<<<<< HEAD
     ownerId: DataTypes.INTEGER,
+=======
+    ownerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+>>>>>>> main
     address: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,

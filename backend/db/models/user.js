@@ -50,10 +50,17 @@ module.exports = (sequelize, DataTypes) => {
         models.Spot, { through: models.Review }
       );
       User.belongsToMany(
+<<<<<<< HEAD
         models.Spot, { through: models.Booking }
       );
       User.belongsToMany(
         models.Spot, { through: models.Image }
+=======
+        models.Spot, { through: models.Image }
+      );
+      User.belongsToMany(
+        models.Spot, { through: models.Booking }
+>>>>>>> main
       );
     }
   };
